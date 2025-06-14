@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Personal Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#challenges">Challenges</a></li>
+        <li><a href="#future">Future Plans</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- About Me -->
+    <section id="about">
+      <h1>About Me</h1>
+      <p><strong>Relevant Info:</strong> I’m a passionate web developer who enjoys building from scratch and solving problems creatively.</p>
+      <p><strong>The Real Me:</strong> Curious, driven, and eager to learn. I enjoy collaborating and growing with teams.</p>
+      <p><strong>Family Background:</strong> I come from a close-knit, supportive family that encourages my goals.</p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h1>Skills, Trainings & Certificates</h1>
+      <p><strong>Skills:</strong> HTML, CSS, JavaScript, Python, React</p>
+      <p><strong>Trainings:</strong> Web Development Bootcamp, Advanced JS Workshop</p>
+      <p><strong>Certificates:</strong> Google UX Design, Coursera Web Development</p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h1>Projects</h1>
+      <article class="project">
+        <h2>Portfolio Website</h2>
+        <p>A fully responsive portfolio showcasing my web development skills.</p>
+        <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+        <img src="portfolio_snapshot.png" alt="Screenshot of my portfolio homepage" />
+        <p><a href="https://github.com/myportfolio" target="_blank" rel="noopener">View on GitHub</a></p>
+      </article>
+      <!-- Add more projects as needed -->
+    </section>
+
+    <!-- Challenges -->
+    <section id="challenges">
+      <h1>Challenges & Learnings</h1>
+      <p><strong>Challenges:</strong> Balancing school and personal projects</p>
+      <p><strong>Learnings:</strong> Time management, perseverance, and adaptability</p>
+    </section>
+
+    <!-- Future Plans -->
+    <section id="future">
+      <h1>Future Plans</h1>
+      <p>I aim to join a global tech company, contribute to open-source, and eventually launch my own startup.</p>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume">
+      <h1>Resume</h1>
+      <iframe src="resume.pdf" width="100%" height="600px" title="Resume PDF">
+        <p>Your browser doesn’t support iframes. <a href="resume.pdf" download>Download Resume</a>.</p>
+      </iframe>
+      <p><a href="resume.pdf" download>Download CV</a></p>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact">
+      <h1>Contact Me</h1>
+      <form id="contactForm" aria-label="Contact Form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

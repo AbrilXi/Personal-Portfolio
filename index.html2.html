@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0fdf4;
+      color: #064e3b;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: #22c55e;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #15803d;
+      outline: none;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background-color: #065f46;
+      color: #d1fae5;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 1.2px;
+      user-select: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus,
+    .nav-links a.active {
+      border-color: #22c55e;
+      color: #22c55e;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 1100px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    section {
+      margin-bottom: 4rem;
+      background-color: #ffffff;
+      padding: 2rem 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+    }
+    section h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #064e3b;
+      border-left: 4px solid #22c55e;
+      padding-left: 0.75rem;
+    }
+    /* About Me Styling */
+    #about p {
+      font-size: 1.125rem;
+      color: #14532d;
+      margin-bottom: 1rem;
+    }
+    #about img {
+      max-width: 180px;
+      border-radius: 50%;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 12px;
+      border: 3px solid #22c55e;
+    }
+    /* Section Titles */
+    h3 {
+      color: #22c55e;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+      color: #276749;
+    }
+    /* Project styling */
+    .project {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #d1fae5;
+    }
+    .project-last {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .project h3 {
+      font-weight: 700;
+      color: #064e3b;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .project p {
+      color: #276749;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .tech-tools {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #16a34a;
+      margin-bottom: 0.5rem;
+    }
+    .project img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      margin-bottom: 0.7rem;
+      box-shadow: 0 6px 20px rgb(0 0 0 / 0.12);
+      object-fit: cover;
+    }
+    .project-links a {
+      margin-right: 1.25rem;
+      font-weight: 600;
+      color: #22c55e;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    .project-links a:hover,
+    .project-links a:focus {
+      border-color: #22c55e;
+      outline: none;
+    }
+    /* Contact form styling */
+    form {
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    label {
+      font-weight: 600;
+      color: #14532d;
+      margin-bottom: 0.3rem;
+    }
+    input[type="text"], input[type="email"], textarea {
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1.5px solid #bbf7d0;
+      font-size: 1rem;
+      background-color: #ecfdf5;
+      color: #065f46;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+      border-color: #22c55e;
+      outline: none;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+      background-color: #d9f99d;
+      color: #065f46;
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    button[type="submit"] {
+      width: fit-content;
+      background-color: #22c55e;
+      color: #f0fdf4;
+      border: none;
+      border-radius: 12px;
+      padding: 0.85rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-self: flex-start;
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background-color: #15803d;
+      outline: none;
+    }
+    /* Footer */
+    footer {
+      background-color: #065f46;
+      color: #d1fae5;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      user-select: none;
+      margin-top: auto;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1.25rem;
+      }
+      main {
+        margin: 1rem auto 3rem;
+        padding: 0 1rem;
+        max-width: 95%;
+      }
+      section {
+        padding: 1.5rem 1rem 2rem;
+      }
+      .project img {
+        max-width: 100%;
+        height: auto;
+      }
+      #about img {
+        float: none;
+        display: block;
+        margin: 0 auto 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo" tabindex="0" aria-label="User Portfolio Logo">Mariella</div>
+    <div class="nav-links" role="navigation" aria-label="Primary Navigation">
+      <a href="#about" class="active">About Me</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#challenges">Challenges</a>
+      <a href="#future">Future Plans</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- About Me -->
+  <section id="about" tabindex="0" aria-labelledby="about-title">
+    <h2 id="about-title">About Me</h2>
+    <!-- Put your picture below -->
+    <img src="C:\Users\mariella\OneDrive\Pictures\Picture.jpg" alt="Portrait photo of Your Name" />
+    <p>Age: 22 years old</p>
+    <p>Birth Date: April 4</p>
+    <p>Number: 0954 283 9720</p>
+    <p>Address: Bacoor, Cavite</p>
+    <p>Family background:I come from a simple family in the city of Bacoor. I am the third of four siblings. My mother is a housemaid, while my father is a retired carpenter. Although life is not easy, it is filled with happiness and peace. Despite the hardships, I continue to work hard to finish my studies so that I can help my parents and lift our family out of poverty. .</p>
+  </section>
+
+  <section id="skills" tabindex="0" aria-labelledby="skills-title">
+    <h2 id="skills-title">Skills</h2>
+    <h3>Acquired Skills</h3>
+    <ul>
+      <li>Basic HTML, CSS, JAVASCRIPT</li>
+      <li>Basic ASSEMBLY AND PYTHON</li>
+      <li>Web design using FIGMA and CANVA</li>
+      <li>Team collaboration and communication</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" tabindex="0" aria-labelledby="projects-title">
+    <h2 id="projects-title">Projects</h2>
+
+    <article class="project" aria-labelledby="project1-title">
+      <h3 id="project1-title">University Page</h3>
+      <img src="C:\Users\mariella\OneDrive\Pictures\Screenshots\Screenshot 2024-11-12 093435.png" alt="Portfolio website screenshot" />
+      <p class="project-links">
+        <a href="https://primoieyasu.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </article>
+
+    <article class="project" aria-labelledby="project2-title">
+      <h3 id="project2-title">2D Game</h3>
+      <p class="tech-tools">Technologies &amp; Tools Used: Gudot</p>
+      <img src="C:\Users\mariella\Downloads\587d96e3-b7f9-47fd-922b-d2f619d3ade2.jpg" alt="Task manager app interface screenshot" />
+      <p class="project-links">
+        <a href="https://github.com/AbrilXi/2D_GAME_Dodge_the_Creeps" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </article>
+  </section>
+
+  <!-- Challenges & Learnings -->
+  <section id="challenges" tabindex="0" aria-labelledby="challenges-title">
+    <h2 id="challenges-title">Challenges &amp; Learnings</h2>
+    <h3>Challenges Faced</h3>
+    <p>As a student with no knowledge of technology, I started my journey in the Computer Science course filled with anxiety and confusion. During my first year, I was very slow in doing school work related to computers. Almost everything was new to me — from programming and using software, to navigating digital tools</p>
+    <p>But I never gave up. With the help of my classmates who patiently guided me and shared their knowledge, I gradually learned. By the second year, I was able to keep up with the tasks. I learned how to research, listen, and ask for help when needed.</p>
+    <p>Now that I am in my third year, I am experiencing more difficult tasks — from more complex programming assignments to group projects with deadlines. Although these are more challenging, I am still able to manage. I continue to learn, and my knowledge in technology is steadily growing.</p>
+    <h3>Life Learnings</h3>
+    <p>Persistence, patience, and continual learning lead to growth and success.</p>
+    <p>Learn from your mistake to avoid more conflict in the future.</p>
+  </section>
+
+  <!-- Future Plans -->
+  <section id="future" tabindex="0" aria-labelledby="future-title">
+    <h2 id="future-title">Future Plans in Life</h2>
+    <p>To build impactful software solutions, contribute to open source, make the work easier in future use.</p>
+  </section>
+
+  <!-- Resume Page -->
+  <section id="resume" tabindex="0" aria-labelledby="resume-title">
+    <h2 id="resume-title">Resume</h2>
+    <p>Download my full curriculum vitae here:</p>
+    <a href="C:\Personal_Portfilio\Resume.docx" download aria-label="Download Curriculum Vitae PDF">Download CV</a>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" tabindex="0" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact Me</h2>
+    <form id="contact-form" aria-describedby="form-desc">
+      <p id="form-desc" hidden>Send me a message using this form.</p>
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" placeholder="Mariella April B. Vizcarra" required autocomplete="name" />
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="abrilbingayan@gmail.com" required autocomplete="email" />
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required rows="5"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025, Mariella April.</p>
+</footer>
+
+<script>
+  // Navigation link active state on scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPos = window.scrollY + 150;
+
+    sections.forEach(section => {
+      if (scrollPos >= section.offsetTop) {
+        current = section.id;
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').substring(1) === current) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Contact form submission handler
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for your message! I will get back to you shortly.');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
+
+
+
